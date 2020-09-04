@@ -1,37 +1,7 @@
 import React from "react";
+import Board from "./Board";
+import PropTypes from "prop-types";
 import "./tic-tac-toe.css";
-
-const Square = (props) => {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
-};
-
-const Board = (props) => {
-  const renderSquare = (i) => {
-    return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />;
-  };
-  const renderRow = () => {
-    let cell = [],
-      i = 0;
-
-    while (i < 9) {
-      cell.push(
-        <div key={i} className="board-row">
-          {renderSquare(i)}
-          {renderSquare(i + 1)}
-          {renderSquare(i + 2)}
-        </div>
-      );
-      i = i + 3;
-    }
-    return cell;
-  };
-
-  return <>{renderRow()}</>;
-};
 
 class TicTacTao extends React.Component {
   constructor(props) {
@@ -81,7 +51,7 @@ class TicTacTao extends React.Component {
     const moves = history.map((step, move) => {
       const desc = move ? "Go to move #" + move : "Go to game start";
       return (
-        <li key={move}>
+        <li key={move} className="status-line">
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
@@ -97,7 +67,7 @@ class TicTacTao extends React.Component {
     }
 
     return (
-      <div className="tic-container">
+      <div className={`${this.props.className}`}>
         <div className="tic-header"> Tic Tac Tao </div>
         <div className="tic">
           <div className="tic-board">
@@ -107,7 +77,7 @@ class TicTacTao extends React.Component {
             />
           </div>
           <div className="tic-info">
-            <div>{status}</div>
+            <div className="status">{status}</div>
             <ol>{moves}</ol>
           </div>
         </div>
@@ -115,6 +85,10 @@ class TicTacTao extends React.Component {
     );
   }
 }
+
+TicTacTao.propTypes = {
+  className: PropTypes.string,
+};
 
 export default TicTacTao;
 

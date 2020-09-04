@@ -1,21 +1,14 @@
-.tic-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .tic-header {
     font-size: 2rem;
     margin: 20px;
 }
 
 .tic {
-    margin: 0 20px;
     display: flex;
 }
 
 .tic-info {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 ol,
@@ -31,6 +24,10 @@ ul {
 
 .status {
     margin-bottom: 10px;
+}
+
+.status-line {
+    margin-bottom: 2px;
 }
 
 .square {
